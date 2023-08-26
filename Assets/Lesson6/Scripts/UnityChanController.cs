@@ -14,7 +14,7 @@ public class UnityChanController : MonoBehaviour
         //横方向の速度
         private float velocityX = 10f;
         //上方向の速度
-        private float velocityY = 10f;
+        private float velocityY = 12f;
         //左右の移動できる範囲
         private float movableRange = 3.4f;
         //動きを減速させる係数
@@ -102,7 +102,7 @@ public class UnityChanController : MonoBehaviour
                 //Jumpステートの場合はJumpにfalseをセットする
                 if (this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName ("Jump"))
                 {
-                        this.myAnimator.SetBool ("Jump", false);
+                    this.myAnimator.SetBool ("Jump", false);
                 }
 
                 //Unityちゃんに速度を与える
@@ -117,7 +117,7 @@ public class UnityChanController : MonoBehaviour
             if (other.gameObject.tag == "CarTag" || other.gameObject.tag == "TrafficConeTag")
             {
                     this.isEnd = true;
-                    //stateTextにGAME OVERを表示（）
+                    //stateTextにGAME OVERを表示
                     this.stateText.GetComponent<Text>().text = "GAME OVER";
             }
 
@@ -125,28 +125,28 @@ public class UnityChanController : MonoBehaviour
             if (other.gameObject.tag == "GoalTag")
             {
                     this.isEnd = true;
-                    //stateTextにGAME CLEARを表示（）
+                    //stateTextにGAME CLEARを表示
                     this.stateText.GetComponent<Text>().text = "CLEAR!!";
             }
 
-            //コインに衝突した場合（）
+            //コインに衝突した場合
             if (other.gameObject.tag == "CoinTag")
             {
-                // スコアを加算()
+                // スコアを加算
                 this.score += 10;
 
-                //ScoreTextに獲得した点数を表示()
+                //ScoreTextに獲得した点数を表示
                 this.scoreText.GetComponent<Text> ().text = "Score " + this.score + "pt";
 
-                //パーティクルを再生（）
+                //パーティクルを再生
                 GetComponent<ParticleSystem> ().Play ();
 
-                //接触したコインのオブジェクトを破棄（）
+                //接触したコインのオブジェクトを破棄
                 Destroy (other.gameObject);
             }
         }
 
-         //ジャンプボタンを押した場合の処理（追加）
+        //ジャンプボタンを押した場合の処理（追加）
         public void GetMyJumpButtonDown()
         {
                 this.isJButtonDown = true;
