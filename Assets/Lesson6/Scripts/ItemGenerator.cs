@@ -25,6 +25,7 @@ public class ItemGenerator : MonoBehaviour
             {
                 //どのアイテムを出すのかをランダムに設定
                 int num = Random.Range (1, 11);
+
                 if (num <= 2)
                 {
                     //コーンをx軸方向に一直線に生成
@@ -40,23 +41,23 @@ public class ItemGenerator : MonoBehaviour
                     //レーンごとにアイテムを生成
                     for (int j = -1; j <= 1; j++)
                     {
-                            //アイテムの種類を決める
-                            int item = Random.Range (1, 11);
-                            //アイテムを置くZ座標のオフセットをランダムに設定
-                            int offsetZ = Random.Range(-5, 6);
-                            //60%コイン配置:30%車配置:10%何もなし
-                            if (1 <= item && item <= 6)
-                            {
-                                    //コインを生成
-                                    GameObject coin = Instantiate (coinPrefab);
-                                    coin.transform.position = new Vector3 (posRange * j, coin.transform.position.y, i + offsetZ);
-                            }
-                            else if (7 <= item && item <= 9)
-                            {
-                                    //車を生成
-                                    GameObject car = Instantiate (carPrefab);
-                                    car.transform.position = new Vector3 (posRange * j, car.transform.position.y, i + offsetZ);
-                            }
+                        //アイテムの種類を決める
+                        int item = Random.Range (1, 11);
+                        //アイテムを置くZ座標のオフセットをランダムに設定
+                        int offsetZ = Random.Range(-5, 6);
+                        //60%コイン配置:30%車配置:10%何もなし
+                        if (1 <= item && item <= 6)
+                        {
+                                //コインを生成
+                                GameObject coin = Instantiate (coinPrefab);
+                                coin.transform.position = new Vector3 (posRange * j, coin.transform.position.y, i + offsetZ);
+                        }
+                        else if (7 <= item && item <= 9)
+                        {
+                                //車を生成
+                                GameObject car = Instantiate (carPrefab);
+                                car.transform.position = new Vector3 (posRange * j, car.transform.position.y, i + offsetZ);
+                        }
                     }
                 }
             }
@@ -67,4 +68,5 @@ public class ItemGenerator : MonoBehaviour
         {
 
         }
+        
 }
